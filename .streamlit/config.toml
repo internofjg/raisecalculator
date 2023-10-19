@@ -1,0 +1,26 @@
+[browser]
+serverAddress = "0.0.0.0"
+serverPort = 8501
+gatherUsageStats = false
+
+[global]
+developmentMode = false
+unitTest = false
+
+[server]
+headless = false
+enableCORS = false
+enableXsrfProtection = true
+maxUploadSize = 200
+port = 8501
+
+[theme]
+base = "light"
+primaryColor = "#F63366"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
+textColor = "#262730"
+font = "sans-serif"
+
+[window]
+title = "加碼計算機"
