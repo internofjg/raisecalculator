@@ -2,6 +2,9 @@ import streamlit as st
 import numpy as np
 import scipy.optimize
 
+# Set the page title and layout
+st.set_page_config(page_title="加碼計算機", page_icon=None, layout='centered', initial_sidebar_state='auto')
+
 def add_lot_opt_sol(p0, x0, p1, final_return, p_exp, exp_return_loss_ratio):
     def f(x):
         x1 = x[0] #ADD LOT
@@ -34,3 +37,24 @@ if st.button('計算'):
     </div>
     """
     st.markdown(result_text, unsafe_allow_html=True)
+
+# 頁尾資訊
+footer_text = """
+<style>
+    .footer {
+        font-size: 16px;
+        color: gray;
+        font-style: italic;
+        position: absolute;
+        bottom: 2%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+</style>
+<div class="footer">
+    加碼計算機風險報酬比為1:3
+</div>
+"""
+
+st.markdown(footer_text, unsafe_allow_html=True)
