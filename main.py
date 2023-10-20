@@ -16,9 +16,16 @@ def add_lot_opt_sol(p0, x0, p1, final_return, p_exp, exp_return_loss_ratio):
     sol = scipy.optimize.minimize(f, [0, 0])
     return sol
 
-
 # Streamlit Title
 st.title('JG說真的-加碼計算機')
+
+# Information below title and above input fields
+info_text = """
+<div style="font-size: 16px; color: gray; font-style: italic; text-align: center;">
+    <em>加碼計算機風險報酬比為1:3</em>
+</div>
+"""
+st.markdown(info_text, unsafe_allow_html=True)
 
 # Streamlit Input fields
 cost_price = st.number_input("庫存成本價", value=0.0, step=0.1)
@@ -32,34 +39,13 @@ if st.button('計算'):
     ans = add_lot_opt_sol(cost_price, cost_amount, add_price, exit_money, expect_price, -3)
 
     if ans.x[0] < 1:
-        st.write("不建議加碼")
+        st.markdown("<span style='font-size: 20px; color: red; font-weight: bold;'>不建議加碼</span>", unsafe_allow_html=True)
     else:
         result_text = f"""
-        <div style="font-size: 18px">
+        <div style="font-size: 20px">
             若想在價格 {add_price} 塊加碼，
             建議加碼 <span style="color: red">{int(ans.x[0])}</span> 張, 
             出場價格 <span style="color: red">{ans.x[1]:.2f}</span> 塊
         </div>
         """
         st.markdown(result_text, unsafe_allow_html=True)
-
-# 頁尾資訊
-footer_text = """
-<style>
-    .footer {
-        font-size: 16px;
-        color: gray;
-        font-style: italic;
-        position: absolute;
-        bottom: 2%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-</style>
-<div class="footer">
-    加碼計算機風險報酬比為1:3
-</div>
-"""
-
-st.markdown(footer_text, unsafe_allow_html=True)
