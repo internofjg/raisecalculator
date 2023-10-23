@@ -34,6 +34,14 @@ add_price = st.number_input("想加碼價位", value=0.0, step=0.1)
 expect_price = st.number_input("預期股價會上漲到多少", value=0.0, step=0.1)
 exit_money = st.number_input("加碼後獲利回吐，至少保有多少獲利離場?", value=0.0, step=0.1)
 
+#Statement
+statement = """
+<div style="font-size: 16px; color: red; font-style: italic; text-align: center;">
+    <em>**聲明：本工具只供參考用途，並不構成任何投資的建議意見！**</em>
+</div>
+"""
+st.markdown(statement, unsafe_allow_html=True)
+
 # Calculate and display the results
 if st.button('計算'):
     ans = add_lot_opt_sol(cost_price, cost_amount, add_price, exit_money, expect_price, -3)
